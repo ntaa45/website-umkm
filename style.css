@@ -82,3 +82,46 @@ ul {
   color: white;
   text-align: center;
 }
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 28px 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 18px;
+}
+
+figure {
+  margin: 0 0 24px;
+}
+
+figcaption {
+  margin-top: 8px;
+  color: #6b5b51;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+caption {
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+th,
+td {
+  border: 1px solid #ead8c3;
+  padding: 10px;
+  text-align: left;
+}
+
+thead {
+  background: #f1e3d3;
+}

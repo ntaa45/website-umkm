@@ -1,7 +1,4 @@
-const headings = [...document.querySelectorAll("h1, h2, h3")];
+const rows = document.querySelectorAll("tbody tr");
 
-console.log("Daftar heading pada halaman:");
-
-headings.forEach((heading) => {
-  console.log(heading.tagName, "-", heading.textContent);
-});
+console.log("Jumlah produk pada tabel:", rows.length);
+console.log("Caption tabel:", document.querySelector("caption").textContent);
