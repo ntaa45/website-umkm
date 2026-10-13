@@ -4,57 +4,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produk - Kopi Nusa</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
 <header class="site-header">
   <a class="brand" href="index.html">Kopi Nusa</a>
-
-  <nav aria-label="Navigasi utama">
-    <a href="index.html">Beranda</a>
+  <nav aria="Navigasi utama">
+    <a href="index.html#beranda">Beranda</a>
     <a href="tentang.html">Tentang Kami</a>
     <a href="produk.html">Produk</a>
     <a href="galeri.html">Galeri</a>
+    <a href="index.html#profil">Profil</a>
     <a href="index.html#kontak-singkat">Kontak Singkat</a>
+    <a href="kontak.html">Kontak</a>
   </nav>
 </header>
 
 <main class="page">
-
   <section aria-labelledby="produk-title">
     <h1 id="produk-title">Produk Kopi Nusa</h1>
 
     <figure>
-      <img
-        src="kopi.jpeg"
-        alt="Secangkir kopi Kopi Nusa"
-      >
+      <img src="kopi.jpeg" alt="Secangkir kopi Kopi Nusa">
       <figcaption>
-        Kopi lokal pilihan yang cocok untuk menemani aktivitas sehari-hari.
+        Kopi lokal pilihan untuk menemani aktivitas sehari-hari.
       </figcaption>
     </figure>
 
     <h2>Produk Unggulan</h2>
+    <p>Pilih tampilan katalog yang ingin kamu lihat.</p>
 
-    <p>
-      Kopi Nusa menyediakan beberapa pilihan kopi dengan bahan lokal
-      dan rasa yang bersahabat.
-    </p>
+    <div class="layout-demo">
+      <div class="toolbar-actions" aria-label="Pilihan layout katalog">
+        <button type="button" data-layout="grid">Grid</button>
+        <button type="button" data-layout="flex">Flexbox</button>
+      </div>
 
-    <ul>
-      <li>Kopi Tubruk Signature</li>
-      <li>Cold Brew Aren</li>
-      <li>Paket Tester Kopi Nusa</li>
-    </ul>
+      <p id="layoutStatus" class="layout-status" role="status">
+        Mode aktif: Grid dua dimensi
+      </p>
+
+      <div id="catalog" class="catalog layout-grid"
+           aria-label="Katalog produk kopi">
+
+        <article class="demo-product-card">
+          <span class="demo-badge">Favorit</span>
+          <h3>Kopi Tubruk Signature</h3>
+          <p>Rasa kopi kuat untuk teman belajar dan bekerja.</p>
+          <div class="card-actions">
+            <strong>Rp18.000</strong>
+            <a href="galeri.html">Detail</a>
+          </div>
+        </article>
+
+        <article class="demo-product-card">
+          <h3>Cold Brew Aren</h3>
+          <p>Kopi dingin dengan sentuhan manis gula aren.</p>
+          <div class="card-actions">
+            <strong>Rp22.000</strong>
+            <a href="galeri.html">Detail</a>
+          </div>
+        </article>
+
+        <article class="demo-product-card">
+          <h3>Paket Tester Kopi Nusa</h3>
+          <p>Pilihan untuk mengenal cita rasa Kopi Nusa.</p>
+          <div class="card-actions">
+            <strong>Cek di Galeri</strong>
+            <a href="galeri.html">Detail</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
   <p>Hubungi Kopi Nusa melalui WhatsApp: 0812-0000-0000</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>

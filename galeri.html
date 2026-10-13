@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Galeri dan Katalog - Kopi Nusa</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
 
 <main class="page">
 
-  <section aria-labelledby="galeri-title">
+  <section class="gallery-layout" aria-labelledby="galeri-title">
     <h1 id="galeri-title">Galeri dan Katalog Kopi Nusa</h1>
     <audio id="bgMusic" autoplay loop controls>
   <source src="assets/audio/background_music.mp3" type="audio/mpeg">
@@ -48,29 +48,36 @@
       <li>Paket tester untuk pelanggan baru</li>
     </ul>
 
-    <h2>Produk Unggulan</h2>
 
-    <figure>
-      <img
-        src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
-        alt="Secangkir kopi dengan busa di atas meja"
-      >
-      <figcaption>
-        Kopi Tubruk Signature dengan rasa kopi yang kuat dan cocok untuk teman belajar.
-      </figcaption>
-    </figure>
-    <figure>
-  <img
-    src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80"
-    alt="Beberapa cangkir kopi kecil untuk mencoba berbagai rasa"
-  >
-  <figcaption>
-    Paket Tester Kopi Nusa berisi pilihan kopi dalam porsi kecil untuk pelanggan baru.
-  </figcaption>
-    </figure>
+<h2>Produk Unggulan</h2>
+
+<div class="gallery-grid">
+  <figure class="product-card">
+  <span class="product-badge">Favorit</span>
+    <img
+      src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
+      alt="Secangkir kopi dengan busa di atas meja"
+    >
+    <figcaption>
+      Kopi Tubruk Signature dengan rasa kopi yang kuat dan cocok untuk teman belajar.
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img
+      src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80"
+      alt="Beberapa cangkir kopi kecil untuk mencoba berbagai rasa"
+    >
+    <figcaption>
+      Paket Tester Kopi Nusa berisi pilihan kopi dalam porsi kecil untuk pelanggan baru.
+    </figcaption>
+  </figure>
+</div>
+
+
 
     <table>
-      
+
       <caption>
         Daftar produk, ukuran, harga, dan status ketersediaan Kopi Nusa.
       </caption>
