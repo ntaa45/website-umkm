@@ -11,13 +11,14 @@
 
 <header class="site-header">
   <a class="brand" href="index.html">Kopi Nusa</a>
-
   <nav aria-label="Navigasi utama">
     <a href="index.html">Beranda</a>
     <a href="tentang.html">Tentang Kami</a>
     <a href="produk.html">Produk</a>
     <a href="galeri.html">Galeri</a>
+    <a href="index.html#profil">Profil</a>
     <a href="index.html#kontak-singkat">Kontak Singkat</a>
+    <a href="kontak.html">Kontak</a>
   </nav>
 </header>
 
@@ -25,16 +26,20 @@
 
   <section class="gallery-layout" aria-labelledby="galeri-title">
     <h1 id="galeri-title">Galeri dan Katalog Kopi Nusa</h1>
-    <audio id="bgMusic" autoplay loop controls>
+    <audio id="bgMusic" loop controls>
   <source src="assets/audio/background_music.mp3" type="audio/mpeg">
   Browser Anda tidak mendukung audio.
     </audio>
 
     <figure>
       <img
-        src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"
-        alt="Secangkir kopi hitam di atas meja kayu"
-      >
+  src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&h=533&q=80"
+  srcset="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&h=267&q=80 400w,
+          https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&h=533&q=80 800w,
+          https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&h=800&q=80 1200w"
+  sizes="(min-width: 892px) 828px, calc(100vw - 32px)"
+  width="800" height="533"
+  alt="Secangkir kopi hitam di atas meja kayu">
       <figcaption>
         Kopi hitam menjadi produk utama untuk pelanggan harian.
       </figcaption>
@@ -75,10 +80,10 @@
 </div>
 
 
-
+<div class="table-wrap" role="region" aria-labelledby="judul-tabel" tabindex="0">
     <table>
 
-      <caption>
+<caption id="judul-tabel">.
         Daftar produk, ukuran, harga, dan status ketersediaan Kopi Nusa.
       </caption>
 
@@ -118,7 +123,7 @@
         </tr>
       </tbody>
     </table>
-
+</div> 
   </section>
 
 </main>
@@ -127,7 +132,7 @@
   <p>Hubungi Kopi Nusa melalui WhatsApp: 0812-0000-0000</p>
 </footer>
 
-<script src="script.js"></script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
