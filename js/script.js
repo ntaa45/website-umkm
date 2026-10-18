@@ -1,19 +1,28 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const catalog = document.getElementById("catalog");
-  const status = document.getElementById("layoutStatus");
-  const buttons = document.querySelectorAll("[data-layout]");
+// Menghitung produk pada tabel jika tabel tersedia
+const rows = document.querySelectorAll("tbody tr");
+const caption = document.querySelector("caption");
 
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const mode = button.dataset.layout;
+console.log("Jumlah produk pada tabel:", rows.length);
 
-      catalog.classList.remove("layout-grid", "layout-flex");
-      catalog.classList.add("layout-" + mode);
+if (caption) {
+  console.log("Caption tabel:", caption.textContent);
+}
 
-      status.textContent = mode === "grid"
-        ? "Mode aktif: Grid dua dimensi"
-        : "Mode aktif: Flexbox satu dimensi dengan wrapping";
-    });
+// Tombol Grid dan Flexbox
+const catalog = document.querySelector("#catalog");
+const status = document.querySelector("#layoutStatus");
+
+document.querySelectorAll("[data-layout]").forEach((button) => {
+  button.addEventListener("click", () => {
+    if (!catalog || !status) return;
+
+    const mode = button.dataset.layout;
+
+    catalog.classList.remove("layout-grid", "layout-flex");
+    catalog.classList.add("layout-" + mode);
+
+    status.textContent = mode === "grid"
+      ? "Mode aktif: Grid dua dimensi"
+      : "Mode aktif: Flexbox satu dimensi dengan wrapping";
   });
 });
-alert("TOMBOL SCRIPT TERBACA");
