@@ -9,7 +9,7 @@
   --color-muted: #75677f;
   --color-surface: #ffffff;
   --color-border: #e4d7ed;
-  --color-focus: #c9a7e8;
+  --color-focus: #76558f;
 
   --space-1: 4px;
   --space-2: 8px;
@@ -361,8 +361,30 @@ input[type="checkbox"] {
   margin-top: auto;
 }
 
-@media (max-width: 520px) {
+/*@media (max-width: 520px) {
   .layout-grid {
     grid-template-columns: 1fr;
   }
+}*/
+.site-header { position: static; }
+.layout-grid, .gallery-grid { grid-template-columns: 1fr; }
+
+@media (min-width: 30rem) {
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+@media (min-width: 45rem) {
+  .site-header { position: sticky; }
+}
+@media (min-width: 47rem) {
+  .layout-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+/* nilai fluida (bagian 4) */
+.page { width: min(100% - 2rem, 860px); max-width: none; padding-inline: 0; }
+.hero { padding: clamp(1rem, 3vw, 2rem); }
+.demo-product-card { padding: clamp(0.75rem, 2.5vw, 1rem); }
+
+/* perbaikan lain */
+.table-wrap { overflow-x: auto; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.field { margin-bottom: var(--space-3); }
+fieldset { min-width: 0; }
