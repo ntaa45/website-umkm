@@ -388,3 +388,22 @@ input[type="checkbox"] {
 pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 .field { margin-bottom: var(--space-3); }
 fieldset { min-width: 0; }
+
+/* BADGE STATUS STOK */
+.status-stok {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.status-stok.tersedia {
+  background-color: #d4edda;
+  color: #207a3c;
+}
+
+.status-stok.tidak-tersedia {
+  background-color: #f8d7da;
+  color: #b02a37;
+}

@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeri dan Katalog - Kopi Nusa</title>
+  <title>Galeri - Kopi Nusa</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
 <header class="site-header">
@@ -25,105 +24,84 @@
 <main class="page">
 
   <section class="gallery-layout" aria-labelledby="galeri-title">
-    <h1 id="galeri-title">Galeri dan Katalog Kopi Nusa</h1>
+    <h1 id="galeri-title">Galeri Kopi Nusa</h1>
+
+    <p>
+      Kenali berbagai pilihan minuman dan makanan dari Kopi Nusa.
+    </p>
+
     <audio id="bgMusic" loop controls>
-  <source src="assets/audio/background_music.mp3" type="audio/mpeg">
-  Browser Anda tidak mendukung audio.
+      <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+      Browser Anda tidak mendukung audio.
     </audio>
 
     <figure>
       <img
-  src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&h=533&q=80"
-  srcset="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&h=267&q=80 400w,
-          https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&h=533&q=80 800w,
-          https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&h=800&q=80 1200w"
-  sizes="(min-width: 892px) 828px, calc(100vw - 32px)"
-  width="800" height="533"
-  alt="Secangkir kopi hitam di atas meja kayu">
+        src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"
+        alt="Secangkir kopi hitam di atas meja kayu">
       <figcaption>
-        Kopi hitam menjadi produk utama untuk pelanggan harian.
+        Kopi lokal pilihan untuk menemani aktivitas sehari-hari.
       </figcaption>
     </figure>
 
-    <h2>Paket Produk</h2>
+    <h2>Galeri Produk</h2>
+    <p>Berbagai pilihan produk favorit Kopi Nusa.</p>
 
+    <div id="galeri-dinamis" class="gallery-grid">
+    </div>
+
+    <h2>Paket Produk</h2>
     <ul>
       <li>Paket seduh rumahan</li>
       <li>Paket kantor mingguan</li>
       <li>Paket tester untuk pelanggan baru</li>
     </ul>
 
+    <div class="table-wrap" role="region"
+         aria-labelledby="judul-tabel" tabindex="0">
+      <table>
+        <caption id="judul-tabel">
+          Daftar produk, ukuran, harga, dan status ketersediaan Kopi Nusa.
+        </caption>
 
-<h2>Produk Unggulan</h2>
+        <thead>
+          <tr>
+            <th scope="col">Nama Produk</th>
+            <th scope="col">Kategori</th>
+            <th scope="col">Harga</th>
+            <th scope="col">Stok/Status</th>
+            <th scope="col">Keterangan</th>
+          </tr>
+        </thead>
 
-<div class="gallery-grid">
-  <figure class="product-card">
-  <span class="product-badge">Favorit</span>
-    <img
-      src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
-      alt="Secangkir kopi dengan busa di atas meja"
-    >
-    <figcaption>
-      Kopi Tubruk Signature dengan rasa kopi yang kuat dan cocok untuk teman belajar.
-    </figcaption>
-  </figure>
+        <tbody>
+          <tr>
+            <th scope="row">Kopi Tubruk Signature</th>
+            <td>Minuman</td>
+            <td>Rp18.000</td>
+            <td>Tersedia</td>
+            <td>Kopi lokal dengan rasa kuat.</td>
+          </tr>
 
-  <figure>
-    <img
-      src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80"
-      alt="Beberapa cangkir kopi kecil untuk mencoba berbagai rasa"
-    >
-    <figcaption>
-      Paket Tester Kopi Nusa berisi pilihan kopi dalam porsi kecil untuk pelanggan baru.
-    </figcaption>
-  </figure>
-</div>
+          <tr>
+            <th scope="row">Cold Brew Aren</th>
+            <td>Minuman</td>
+            <td>Rp22.000</td>
+            <td>Tersedia</td>
+            <td>Kopi dingin dengan gula aren.</td>
+          </tr>
 
+          <tr>
+            <th scope="row">Paket Tester Kopi Nusa</th>
+            <td>Paket</td>
+            <td>Rp15.000</td>
+            <td>Tersedia</td>
+            <td>Paket kecil untuk pelanggan baru.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-<div class="table-wrap" role="region" aria-labelledby="judul-tabel" tabindex="0">
-    <table>
-
-<caption id="judul-tabel">
-        Daftar produk, ukuran, harga, dan status ketersediaan Kopi Nusa.
-      </caption>
-
-      <thead>
-        <tr>
-          <th scope="col">Nama Produk</th>
-          <th scope="col">Kategori</th>
-          <th scope="col">Harga</th>
-          <th scope="col">Stok/Status</th>
-          <th scope="col">Keterangan</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <th scope="row">Kopi Tubruk Signature</th>
-          <td>Kopi</td>
-          <td>Rp18.000</td>
-          <td>Tersedia</td>
-          <td>Kopi lokal dengan rasa kuat untuk teman belajar.</td>
-        </tr>
-
-        <tr>
-          <th scope="row">Cold Brew Aren</th>
-          <td>Minuman dingin</td>
-          <td>Rp22.000</td>
-          <td>Tersedia</td>
-          <td>Kopi dingin dengan perpaduan rasa manis gula aren.</td>
-        </tr>
-
-        <tr>
-          <th scope="row">Paket Tester Kopi Nusa</th>
-          <td>Paket</td>
-          <td>Rp15.000</td>
-          <td>Tersedia</td>
-          <td>Paket kecil untuk pelanggan yang ingin mencoba produk.</td>
-        </tr>
-      </tbody>
-    </table>
-</div> 
   </section>
 
 </main>
@@ -132,7 +110,6 @@
   <p>Hubungi Kopi Nusa melalui WhatsApp: 0812-0000-0000</p>
 </footer>
 
-<script src="js/script.js"></script>
-
+<script src="js/app.js" defer></script>
 </body>
 </html>
