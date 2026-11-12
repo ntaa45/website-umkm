@@ -407,3 +407,53 @@ fieldset { min-width: 0; }
   background-color: #f8d7da;
   color: #b02a37;
 }
+
+
+/* HAMBURGER MENU */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* Tampilan HP */
+@media (max-width: 47rem) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-header {
+    position: sticky;
+    flex-wrap: wrap;
+  }
+
+  .site-header nav {
+    display: none;
+    flex-direction: column;
+    flex-basis: 100%;
+    gap: 12px;
+    padding-top: 12px;
+  }
+
+  .menu-toggle[aria-expanded="true"] + nav {
+    display: flex;
+  }
+
+  .site-header nav a {
+    display: block;
+    padding: 8px 0;
+  }
+}
+
+/* Tampilan laptop */
+@media (min-width: 47.01rem) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .site-header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+  }
+}

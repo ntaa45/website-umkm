@@ -64,6 +64,85 @@ const formatRupiah = (harga) => {
     maximumFractionDigits: 0
   }).format(harga);
 };
+console.log("Uji formatRupiah:");
+console.log(formatRupiah(18000));
+console.log(formatRupiah(25000));
+console.log(formatRupiah(0));
+
+// FUNGSI STATUS STOK
+function statusStok(stok) {
+  if (stok > 0) {
+    return {
+      label: "Tersedia",
+      className: "tersedia"
+    };
+  } else {
+    return {
+      label: "Tidak Tersedia",
+      className: "tidak-tersedia"
+    };
+  }
+}
+
+console.log("Uji statusStok:");
+console.log(statusStok(10));
+console.log(statusStok(0));
+console.log(statusStok(-1));
+
+
+// FUNGSI MEMBUAT KARTU PRODUK
+function buatKartuProduk(item) {
+  const stok = statusStok(item.stok);
+
+  const badge = item.unggulan
+    ? '<span class="demo-badge">Produk Unggulan</span>'
+    : "";
+
+  return `
+    <article class="demo-product-card">
+      ${badge}
+      <h3>${item.nama}</h3>
+      <p>${item.deskripsi}</p>
+      <p>Kategori: ${item.kategori}</p>
+      <p>Stok:
+        <span class="status-stok ${stok.className}">
+          ${stok.label}
+        </span>
+      </p>
+      <div class="card-actions">
+        <strong>${formatRupiah(item.harga)}</strong>
+      </div>
+    </article>
+  `;
+}
+
+// UJI FUNGSI buatKartuProduk()
+const hasilKartu = buatKartuProduk(produk[0]);
+
+console.log("Uji buatKartuProduk:");
+console.log(hasilKartu);
+
+// UJI ARRAY METHODS
+
+const hasilFilter = produk.filter(item => item.stok > 0);
+console.log("Hasil filter:", hasilFilter);
+
+const namaProduk = produk.map(item => item.nama);
+console.log("Hasil map:", namaProduk);
+
+const hasilFind = produk.find(item => item.unggulan === true);
+console.log("Hasil find:", hasilFind);
+
+// UJI FOREACH
+console.log("Uji forEach:");
+
+produk.forEach((item, index) => {
+  console.log(index + 1, item.nama, item.stok);
+});
+
+// UJI CONSOLE TABLE
+console.table(produk);
+
 
 // MENAMPILKAN DATA KE DOM
 function renderProduk() {
@@ -71,35 +150,34 @@ function renderProduk() {
 
   if (!tempatProduk) return;
 
-  let hasilHTML = "";
-
-  produk.forEach((item) => {
-
-    // CONDITIONAL STATUS STOK
-    let statusStok = item.stok > 0
-  ? '<span class="status-stok tersedia">Tersedia</span>'
-  : '<span class="status-stok tidak-tersedia">Tidak Tersedia</span>';
-
-    // CONDITIONAL PRODUK UNGGULAN
-    let badge = item.unggulan
-      ? '<span class="demo-badge">Produk Unggulan</span>'
-      : "";
-
-    hasilHTML += `
-      <article class="demo-product-card">
-        ${badge}
-        <h3>${item.nama}</h3>
-        <p>${item.deskripsi}</p>
-        <p>Kategori: ${item.kategori}</p>
-        <p>Stok: ${statusStok}</p>
-        <div class="card-actions">
-          <strong>${formatRupiah(item.harga)}</strong>
-        </div>
-      </article>
-    `;
-  });
+  const hasilHTML = produk
+    .map((item) => buatKartuProduk(item))
+    .join("");
 
   tempatProduk.innerHTML = hasilHTML;
+}
+
+// MENGHITUNG PRODUK YANG TERSEDIA DENGAN FILTER
+const produkTersedia = produk.filter(item => item.stok > 0);
+
+const tempatRingkasan = document.querySelector("#produk-ringkasan");
+
+if (tempatRingkasan) {
+  tempatRingkasan.innerHTML = `
+    <p>Jumlah produk tersedia: <strong>${produkTersedia.length}</strong></p>
+  `;
+}
+
+// MENCARI PRODUK UNGGULAN DENGAN FIND
+const produkUnggulan = produk.find(item => item.unggulan === true);
+
+const tempatUnggulan = document.querySelector("#produk-unggulan");
+
+if (tempatUnggulan && produkUnggulan) {
+  tempatUnggulan.innerHTML = `
+    <h2>Produk Pilihan</h2>
+    ${buatKartuProduk(produkUnggulan)}
+  `;
 }
 
 // MEMANGGIL FUNGSI RENDER PRODUK
@@ -151,3 +229,29 @@ function renderGaleri() {
 
 // MEMANGGIL FUNGSI GALERI
 renderGaleri();
+
+// HAMBURGER MENU
+const menuToggle = document.querySelector(".menu-toggle");
+const navMenu = document.querySelector("#nav-menu");
+
+if (menuToggle && navMenu) {
+  menuToggle.addEventListener("click", () => {
+    const menuTerbuka =
+      menuToggle.getAttribute("aria-expanded") === "true";
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(!menuTerbuka)
+    );
+
+    menuToggle.textContent = menuTerbuka ? "☰" : "✕";
+  });
+
+  navMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.textContent = "☰";
+    });
+  });
+}
+

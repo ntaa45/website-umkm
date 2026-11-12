@@ -10,7 +10,18 @@
 
 <header class="site-header">
   <a class="brand" href="index.html">Kopi Nusa</a>
-  <nav aria-label="Navigasi utama">
+
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Buka menu navigasi"
+    aria-expanded="false"
+    aria-controls="nav-menu"
+  >
+    ☰
+  </button>
+
+  <nav id="nav-menu" aria-label="Navigasi utama">
     <a href="index.html">Beranda</a>
     <a href="tentang.html">Tentang Kami</a>
     <a href="produk.html">Produk</a>
@@ -20,6 +31,7 @@
     <a href="kontak.html">Kontak</a>
   </nav>
 </header>
+
 
 <main class="page">
   <section aria-labelledby="produk-title">
@@ -34,6 +46,10 @@
 
     <h2>Produk Unggulan</h2>
     <p>Pilih tampilan katalog yang ingin kamu lihat.</p>
+
+    <div id="produk-ringkasan"></div>
+
+<div id="produk-unggulan"></div>
 
     <div class="layout-demo">
       <div class="toolbar-actions" role="group" aria-label="Pilihan layout katalog">
