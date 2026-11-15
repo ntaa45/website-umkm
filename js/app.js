@@ -1,4 +1,4 @@
-// DATA PRODUK KOPI NUSA
+// DATA PRODUK LUNARIA COFFEE
 const produk = [
   {
     nama: "Kopi Tubruk Signature",
@@ -144,29 +144,121 @@ produk.forEach((item, index) => {
 console.table(produk);
 
 
-// MENAMPILKAN DATA KE DOM
-function renderProduk() {
+
+// P11: MEMBUAT ELEMEN KARTU PRODUK
+function buatElemenProduk(item) {
+  const kartu = document.createElement("article");
+  kartu.className = "demo-product-card";
+
+  if (item.unggulan) {
+    const badge = document.createElement("span");
+    badge.className = "demo-badge";
+    badge.textContent = "Produk Unggulan";
+    kartu.append(badge);
+  }
+
+  const judul = document.createElement("h3");
+  judul.textContent = item.nama;
+
+  const deskripsi = document.createElement("p");
+  deskripsi.textContent = item.deskripsi;
+
+  const kategori = document.createElement("p");
+  kategori.textContent = "Kategori: " + item.kategori;
+
+  const infoStok = document.createElement("p");
+  infoStok.textContent = "Stok: ";
+
+  const stok = statusStok(item.stok);
+  const labelStok = document.createElement("span");
+  labelStok.className = "status-stok " + stok.className;
+  labelStok.textContent = stok.label;
+  infoStok.append(labelStok);
+
+  const aksi = document.createElement("div");
+  aksi.className = "card-actions";
+
+  const harga = document.createElement("strong");
+  harga.textContent = formatRupiah(item.harga);
+  aksi.append(harga);
+
+  kartu.append(judul, deskripsi, kategori, infoStok, aksi);
+
+  return kartu;
+}
+
+// P11: EMPTY STATE
+function buatEmptyState(kategori) {
+  const pesan = document.createElement("div");
+  pesan.className = "empty-state";
+  pesan.textContent =
+    "Belum ada produk untuk kategori " + kategori + ".";
+
+  return pesan;
+}
+
+// P11: RENDER PRODUK BERDASARKAN KATEGORI
+function renderProduk(kategoriAktif = "Semua") {
   const tempatProduk = document.querySelector("#produk-dinamis");
+  const tempatRingkasan = document.querySelector("#produk-ringkasan");
 
-  if (!tempatProduk) return;
+  if (!tempatProduk || !tempatRingkasan) return;
 
-  const hasilHTML = produk
-    .map((item) => buatKartuProduk(item))
-    .join("");
+  let hasilFilter;
 
-  tempatProduk.innerHTML = hasilHTML;
+  if (kategoriAktif === "Semua") {
+    hasilFilter = produk;
+  } else if (kategoriAktif === "Kopi") {
+    hasilFilter = produk.filter(item =>
+      item.nama.toLowerCase().includes("kopi") ||
+      item.nama.toLowerCase().includes("brew")
+    );
+  } else {
+    hasilFilter = produk.filter(item =>
+      item.kategori === kategoriAktif
+    );
+  }
+
+  // Membersihkan kartu sebelumnya
+  tempatProduk.replaceChildren();
+
+  // Menampilkan jumlah produk
+  tempatRingkasan.textContent =
+    "Kategori " + kategoriAktif + " menampilkan " +
+    hasilFilter.length + " produk dari " +
+    produk.length + " total produk.";
+
+  // Menampilkan empty state jika tidak ada hasil
+  if (hasilFilter.length === 0) {
+    tempatProduk.append(buatEmptyState(kategoriAktif));
+    return;
+  }
+
+  // Membuat dan memasukkan kartu produk
+  hasilFilter.forEach(item => {
+    const kartu = buatElemenProduk(item);
+    tempatProduk.append(kartu);
+  });
 }
 
-// MENGHITUNG PRODUK YANG TERSEDIA DENGAN FILTER
-const produkTersedia = produk.filter(item => item.stok > 0);
+// P11: EVENT LISTENER TOMBOL FILTER
+const tombolFilter = document.querySelectorAll("[data-filter]");
 
-const tempatRingkasan = document.querySelector("#produk-ringkasan");
+tombolFilter.forEach(tombol => {
+  tombol.addEventListener("click", () => {
+    tombolFilter.forEach(item => {
+      item.classList.remove("is-active");
+    });
 
-if (tempatRingkasan) {
-  tempatRingkasan.innerHTML = `
-    <p>Jumlah produk tersedia: <strong>${produkTersedia.length}</strong></p>
-  `;
-}
+    tombol.classList.add("is-active");
+
+    const kategori = tombol.dataset.filter;
+    renderProduk(kategori);
+  });
+});
+
+// Menampilkan semua produk saat halaman dibuka
+renderProduk("Semua");
 
 // MENCARI PRODUK UNGGULAN DENGAN FIND
 const produkUnggulan = produk.find(item => item.unggulan === true);
@@ -230,11 +322,20 @@ function renderGaleri() {
 // MEMANGGIL FUNGSI GALERI
 renderGaleri();
 
-// HAMBURGER MENU
-const menuToggle = document.querySelector(".menu-toggle");
-const navMenu = document.querySelector("#nav-menu");
 
-if (menuToggle && navMenu) {
+ // HAMBURGER MENU
+function aktifkanHamburger() {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector("#nav-menu");
+
+  if (!menuToggle || !navMenu) return;
+
+  function tutupMenu() {
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.textContent = "☰";
+    navMenu.classList.remove("menu-terbuka");
+  }
+
   menuToggle.addEventListener("click", () => {
     const menuTerbuka =
       menuToggle.getAttribute("aria-expanded") === "true";
@@ -245,13 +346,14 @@ if (menuToggle && navMenu) {
     );
 
     menuToggle.textContent = menuTerbuka ? "☰" : "✕";
+    navMenu.classList.toggle("menu-terbuka", !menuTerbuka);
   });
 
-  navMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.textContent = "☰";
-    });
+  navMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", tutupMenu);
   });
+
+  window.addEventListener("pageshow", tutupMenu);
 }
 
+aktifkanHamburger();

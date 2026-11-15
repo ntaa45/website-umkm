@@ -1,15 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produk - Kopi Nusa</title>
+  <title>Produk - LUNARIA Coffee</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="site-header">
-  <a class="brand" href="index.html">Kopi Nusa</a>
+  <a class="brand" href="index.html">LUNARIA Coffee</a>
 
   <button
     class="menu-toggle"
@@ -32,24 +33,37 @@
   </nav>
 </header>
 
-
 <main class="page">
   <section aria-labelledby="produk-title">
-    <h1 id="produk-title">Produk Kopi Nusa</h1>
+    <h1 id="produk-title">Produk LUNARIA Coffee</h1>
 
     <figure>
-      <img src="kopi.jpeg" alt="Secangkir kopi Kopi Nusa">
+      <img src="kopi.jpeg" alt="Secangkir kopi LUNARIA Coffee">
       <figcaption>
         Kopi lokal pilihan untuk menemani aktivitas sehari-hari.
       </figcaption>
     </figure>
 
     <h2>Produk Unggulan</h2>
-    <p>Pilih tampilan katalog yang ingin kamu lihat.</p>
+    <p>Pilih kategori produk yang ingin kamu lihat.</p>
 
-    <div id="produk-ringkasan"></div>
+    <div class="filter-container" role="group" aria-label="Filter kategori produk">
+      <button type="button" class="filter-button is-active" data-filter="Semua">
+        Semua
+      </button>
+      <button type="button" class="filter-button" data-filter="Minuman">
+        Minuman
+      </button>
+      <button type="button" class="filter-button" data-filter="Makanan">
+        Makanan
+      </button>
+      <button type="button" class="filter-button" data-filter="Kopi">
+        Kopi
+      </button>
+    </div>
 
-<div id="produk-unggulan"></div>
+    <p id="produk-ringkasan" aria-live="polite"></p>
+    <div id="produk-unggulan"></div>
 
     <div class="layout-demo">
       <div class="toolbar-actions" role="group" aria-label="Pilihan layout katalog">
@@ -65,13 +79,12 @@
            aria-label="Katalog produk kopi">
         <div id="produk-dinamis"></div>
       </div>
-
     </div>
   </section>
 </main>
 
 <footer class="site-footer">
-  <p>Hubungi Kopi Nusa melalui WhatsApp: 0812-0000-0000</p>
+  <p>Hubungi LUNARIA Coffee melalui WhatsApp: 0812-0000-0000</p>
 </footer>
 
 <script src="js/app.js" defer></script>
