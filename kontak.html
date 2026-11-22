@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <script src="js/form.js" defer></script>
+  <script src="js/newsletter.js" defer></script>
   <script src="js/app.js" defer></script>
 </head>
 
@@ -47,7 +48,7 @@
     Gunakan form ini untuk bertanya tentang produk, pesanan, atau kerja sama.
   </p>
 
-  <form id="form-kontak" action="#" method="post">
+  <form id="form-kontak" action="#" method="post" novalidate>
 
     <div class="field">
       <label for="nama">Nama lengkap</label>
@@ -57,7 +58,10 @@
         type="text"
         required
         minlength="3"
-      />
+        aria-describedby="error-nama"
+        aria-invalid="false"
+      >
+      <small id="error-nama" class="error-message"></small>
     </div>
 
     <div class="field">
@@ -67,16 +71,23 @@
         name="email"
         type="email"
         required
-      />
+        aria-describedby="error-email"
+        aria-invalid="false"
+      >
+      <small id="error-email" class="error-message"></small>
     </div>
 
     <div class="field">
       <label for="telepon">Nomor WhatsApp</label>
       <input
-        id="telepon"
-        name="telepon"
-        type="tel"
-      />
+  id="telepon"
+  name="telepon"
+  type="tel"
+  pattern="(\\+62|62|0)8[1-9][0-9]{7,11}"
+  aria-describedby="error-telepon"
+  aria-invalid="false"
+>
+      <small id="error-telepon" class="error-message"></small>
     </div>
 
     <fieldset>
@@ -98,15 +109,36 @@
       </label>
     </fieldset>
 
+    <fieldset>
+      <legend>Channel kontak pilihan</legend>
+
+      <label>
+        <input type="radio" name="channel" value="whatsapp" checked>
+        WhatsApp
+      </label>
+
+      <label>
+        <input type="radio" name="channel" value="email">
+        Email
+      </label>
+    </fieldset>
+
     <div class="field">
       <label for="paket">Paket yang diminati</label>
 
-      <select id="paket" name="paket" required>
+      <select
+        id="paket"
+        name="paket"
+        required
+        aria-describedby="error-paket"
+        aria-invalid="false"
+      >
         <option value="">Pilih paket</option>
         <option value="rumahan">Paket rumahan</option>
         <option value="kantor">Paket kantor</option>
         <option value="reseller">Paket reseller</option>
       </select>
+      <small id="error-paket" class="error-message"></small>
     </div>
 
     <fieldset>
@@ -118,27 +150,20 @@
           name="topik"
           value="produk"
           required
-        />
+        >
         Produk
       </label>
 
       <label>
-        <input
-          type="radio"
-          name="topik"
-          value="pesanan"
-        />
+        <input type="radio" name="topik" value="pesanan">
         Pesanan
       </label>
 
       <label>
-        <input
-          type="radio"
-          name="topik"
-          value="kerja-sama"
-        />
+        <input type="radio" name="topik" value="kerja-sama">
         Kerja sama
       </label>
+      <small id="error-topik" class="error-message"></small>
     </fieldset>
 
     <div class="field">
@@ -150,14 +175,57 @@
         rows="4"
         required
         minlength="10"
+        aria-describedby="error-pesan"
+        aria-invalid="false"
       ></textarea>
+      <small id="error-pesan" class="error-message"></small>
     </div>
 
     <button type="submit">
       Kirim Pesan
     </button>
 
+    <p id="status-form" class="success-message" role="status" aria-live="polite"></p>
+
   </form>
+
+  <section class="preference-panel" aria-labelledby="newsletter-title">
+    <h2 id="newsletter-title">Preferensi Newsletter</h2>
+
+    <p>
+      Simpan pilihan newsletter agar preferensimu tetap tersedia saat halaman dibuka kembali.
+    </p>
+
+    <form id="form-newsletter">
+      <div class="field">
+        <label for="email-newsletter">Email newsletter</label>
+        <input
+          id="email-newsletter"
+          name="emailNewsletter"
+          type="email"
+          placeholder="nama@email.com"
+        >
+      </div>
+
+      <label>
+        <input
+          type="checkbox"
+          id="newsletter-aktif"
+          name="newsletterAktif"
+        >
+        Saya ingin menerima informasi dan promo LUNARIA Coffee.
+      </label>
+
+      <button type="submit">Simpan Preferensi</button>
+
+      <p
+        id="status-newsletter"
+        class="success-message"
+        role="status"
+        aria-live="polite"
+      ></p>
+    </form>
+  </section>
 
   <section aria-labelledby="preview-title">
     <h2 id="preview-title">Preview</h2>

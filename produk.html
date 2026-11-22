@@ -63,8 +63,14 @@
     </div>
 
     <p id="produk-ringkasan" aria-live="polite"></p>
-    <div id="produk-unggulan"></div>
 
+    <!-- Kartu produk langsung di bawah tombol kategori -->
+    <div id="catalog" class="catalog layout-grid"
+         aria-label="Katalog produk kopi">
+      <div id="produk-dinamis"></div>
+    </div>
+
+    <!-- Pilihan layout dipindahkan ke bawah kartu produk -->
     <div class="layout-demo">
       <div class="toolbar-actions" role="group" aria-label="Pilihan layout katalog">
         <button type="button" data-layout="grid">Grid</button>
@@ -74,11 +80,6 @@
       <p id="layoutStatus" class="layout-status" role="status">
         Mode aktif: Grid dua dimensi
       </p>
-
-      <div id="catalog" class="catalog layout-grid"
-           aria-label="Katalog produk kopi">
-        <div id="produk-dinamis"></div>
-      </div>
     </div>
   </section>
 </main>

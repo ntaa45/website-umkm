@@ -260,17 +260,6 @@ tombolFilter.forEach(tombol => {
 // Menampilkan semua produk saat halaman dibuka
 renderProduk("Semua");
 
-// MENCARI PRODUK UNGGULAN DENGAN FIND
-const produkUnggulan = produk.find(item => item.unggulan === true);
-
-const tempatUnggulan = document.querySelector("#produk-unggulan");
-
-if (tempatUnggulan && produkUnggulan) {
-  tempatUnggulan.innerHTML = `
-    <h2>Produk Pilihan</h2>
-    ${buatKartuProduk(produkUnggulan)}
-  `;
-}
 
 // MEMANGGIL FUNGSI RENDER PRODUK
 renderProduk();
